@@ -28,14 +28,14 @@ public class SimpleGuiController : MonoBehaviour
 
 	private void OnPlayerDestroyed(object sender, EventArgs e)
 	{
-        time = Round(time,2);
+		time = Round(time,2);
 		Score.text = "时间：" + time + "s";
 		EndPanel.SetActive(true);
 	}
 
-    float Round(float f, int acc)
-    {
-        float temp = f * Mathf.Pow(10, acc);
-        return Mathf.Round(temp) / Mathf.Pow(10, acc);
-    }
+	float Round(float f, int acc)
+	{
+		float temp = f * Mathf.Pow(10, acc);
+		return Mathf.Round(temp) / Mathf.Pow(10, acc);
+	}
 }

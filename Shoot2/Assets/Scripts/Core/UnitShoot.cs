@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Test : MonoBehaviour
+public class UnitShoot : MonoBehaviour
 {
     [SerializeField]
     private Bullet bullet;
     [SerializeField]
     public GameObject weaponHolder;
+
+    private float time;
+    private float coolDownTime;
 
     private void Start()
     {
@@ -16,13 +19,19 @@ public class Test : MonoBehaviour
 
     public void Initialize(Bullet selectedBullet,GameObject weaponHolder)
     {
+        time = 0;
+        coolDownTime = selectedBullet.baseCoolDown;
         bullet = selectedBullet;
         bullet.Initialize(weaponHolder);
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        time += Time.deltaTime;
+        if (time>coolDownTime)
+        {
             bullet.Shoot();
+            time = 0;
+        }
     }
 }
