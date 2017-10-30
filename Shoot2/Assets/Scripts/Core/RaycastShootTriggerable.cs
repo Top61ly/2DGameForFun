@@ -26,7 +26,18 @@ public class RaycastShootTriggerable : MonoBehaviour
 
     public void Fire()
     {
+        StartCoroutine(ShotEffect());
+
         laserLine.SetPosition(0, gunEnd.position);
 
+    }
+
+    private IEnumerator ShotEffect()
+    {
+        laserLine.enabled = true;
+
+        yield return shotDuration;
+
+        laserLine.enabled = false;
     }
 }
