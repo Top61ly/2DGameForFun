@@ -21,21 +21,43 @@ public class RaycastShootTriggerable : Triggerable
         laserLine = GetComponent<LineRenderer>();
     }
 
+    private void Update()
+    {
+        laserLine.SetPosition(0, gunEnd.position);
+
+        Vector3 destPosition = GetPosition();
+
+        //if (playerNumber == 0)
+        //    destPosition = gunEnd.position + new Vector3(weaponRange, 0, 0);
+        //else
+        //    destPosition = gunEnd.position + new Vector3(-weaponRange, 0, 0);
+
+        laserLine.SetPosition(1,destPosition);
+    }
+
     public void Fire()
     {
         StartCoroutine(ShotEffect());
+    }
 
-        laserLine.SetPosition(0, gunEnd.position);
-
-        Vector3 destPosition = new Vector3();
-
+    private Vector3 GetPosition()
+    {
+        Vector3 vec = new Vector3();
         if (playerNumber == 0)
-            destPosition = gunEnd.position + new Vector3(weaponRange, 0, 0);
+            vec = Vector3.right;
         else
-            destPosition = gunEnd.position + new Vector3(-weaponRange, 0, 0);
+            vec = -Vector3.right;
 
-        laserLine.SetPosition(1,destPosition);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, vec,weaponRange);
 
+        Debug.Log(hit.transform.tag);
+        Debug.Log(hit.transform.GetComponent<Unit>().playerNumber);
+        if (hit.collider != null && hit.collider.CompareTag("Unit")&&hit.transform.GetComponent<Unit>().playerNumber != playerNumber)
+            return hit.point;
+        else if (playerNumber == 0)        
+            return gunEnd.position + new Vector3(weaponRange, 0, 0);
+
+        return gunEnd.position - new Vector3(weaponRange, 0, 0);
     }
 
     private IEnumerator ShotEffect()

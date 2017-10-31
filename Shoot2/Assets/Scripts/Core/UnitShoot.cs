@@ -12,8 +12,9 @@ public class UnitShoot : MonoBehaviour
     private float time;
     private float coolDownTime;
 
-    private void Start()
+    private void OnEnable()
     {
+        Debug.Log("Shoot Start");
         Initialize(bullet, weaponHolder);
     }
 

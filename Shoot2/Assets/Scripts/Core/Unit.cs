@@ -9,13 +9,21 @@ public enum UnitState
     Dead
 }
 
-public abstract class Unit: MonoBehaviour
+public class Unit: MonoBehaviour
 {
     public int playerNumber;
 
     public UnitState unitState = UnitState.Waiting;
 
-    public int health = 2;
+    public int health = 1;
+
+    private UnitShoot unitShoot;
+
+
+    private void Start()
+    {
+        unitShoot = GetComponent<UnitShoot>();
+    }
 
     public virtual void TakeDamage(int damage)
     {
@@ -23,12 +31,7 @@ public abstract class Unit: MonoBehaviour
 
         if (health <= 0)
             Dead();
-    }
-
-    protected virtual void Shoot()
-    {
-
-    }
+    }    
 
     protected virtual void Dead()
     {
@@ -36,12 +39,22 @@ public abstract class Unit: MonoBehaviour
         Destroy(gameObject);
     }
 
-    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.CompareTag("Unit"))
+        if (collision.transform.CompareTag("Unit") && unitState == UnitState.Alive)
         {
-            Unit unit = collision.GetComponent<Unit>();
-            unit.TakeDamage(2);
-        }        
+            Unit unit = collision.transform.GetComponent<Unit>();
+            if (unit.playerNumber == playerNumber)
+                Combine(unit.transform);
+            else
+                TakeDamage(1);
+        }
     }
+
+    protected virtual void Combine(Transform obj)
+    {
+        obj.parent = transform.parent;
+    }
+
+
 }

@@ -11,9 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3412323beddc2dc4fbf1b0af64581ca6, type: 3}
   m_Name: Circle
   m_EditorClassIdentifier: 
-  name: Circle
+  name: New Bullet
   sound: {fileID: 0}
-  baseCoolDown: 1
-  projectileForce: 500
-  projectile: {fileID: 50905962601882562, guid: cab45b006f66d894e9458b21ead420ca,
+  baseCoolDown: 0.2
+  projectileForce: 2000
+  projectile: {fileID: 50115838955188626, guid: fff2c8222b0141e478b6727c0d6ab3fe,
     type: 2}

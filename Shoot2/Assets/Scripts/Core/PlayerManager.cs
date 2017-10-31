@@ -27,8 +27,8 @@ public class PlayerManager : MonoBehaviour
         {
             destPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 #endif 
-            Vector2 direction = destPosition - transform.position;
- 
+            Vector2 direction =  (destPosition - transform.position).normalized;
+
             transform.Translate(direction * speed * Time.deltaTime);
         }
     }
