@@ -78,6 +78,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\BulletsGenerator\MonoBehavior\Boss.cs" />
+    <Compile Include="Assets\Scripts\BulletsGenerator\MonoBehavior\LinearWeapon.cs" />
+    <Compile Include="Assets\Scripts\BulletsGenerator\MonoBehavior\Weapon.cs" />
+    <Compile Include="Assets\Scripts\BulletsGenerator\ScriptableObject\Bullets\Bullets.cs" />
+    <Compile Include="Assets\Scripts\BulletsGenerator\ScriptableObject\Bullets\LinearParticleBullets.cs" />
+    <Compile Include="Assets\Scripts\BulletsGenerator\ScriptableObject\Bullets\ParticleBullets.cs" />
+    <Compile Include="Assets\Scripts\BulletsGenerator\ScriptableObject\Bullets\RandomChasingParticleBullets.cs" />
+    <Compile Include="Assets\Scripts\BulletsGenerator\ScriptableObject\Bullets\ShotParticleBullets.cs" />
+    <Compile Include="Assets\Scripts\BulletsGenerator\ScriptableObject\BulletsWave.cs" />
     <Compile Include="Assets\Scripts\Core\DestroyByBoundary.cs" />
     <Compile Include="Assets\Scripts\Core\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\Core\ProjectileShootTriggerable.cs" />
