@@ -99,6 +99,7 @@
     <Compile Include="Assets\Scripts\ScriptableObject\Bullet.cs" />
     <Compile Include="Assets\Scripts\ScriptableObject\ProjectileBullet.cs" />
     <Compile Include="Assets\Scripts\ScriptableObject\RaycastBullet.cs" />
+    <Compile Include="Assets\Scripts\Shader\OffsetScroller.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

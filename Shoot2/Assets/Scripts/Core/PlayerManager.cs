@@ -30,7 +30,7 @@ public class PlayerManager : MonoBehaviour
         startTime += Time.deltaTime;
         if (startTime > timGap)
         {
-            GameObject go = Instantiate(bulletRb, transform.position, Quaternion.identity, transform) as GameObject;
+            GameObject go = Instantiate(bulletRb, transform.position, Quaternion.identity) as GameObject;
             go.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 500);
             startTime = 0;
         }
